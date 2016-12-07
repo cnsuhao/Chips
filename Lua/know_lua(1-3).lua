@@ -61,24 +61,36 @@ end
 
 greet( "Kurapica" )  -- 你好 Kurapica
 
+--函数多值返回
+ret = function ( ... )
+	return 1,2,3,4
+end
 
+print(ret())
+print(ret(),5) --这个设定是为了避免多值返回情况破坏了参数的位置，造成程序的不稳定。
+print((ret())) --将返回值用括号括起来的意思，是只取第一个返回值，注意和函数调用使用的括号区分。
 
+--可变参数函数
+sum = function ( ... )
+	-- body
+	print('总数',select('#',...))
 
+	local total = 0
+	for i=1,select('#',...) do
+		print(i)
+		total = total + select(i,...)
+	end
 
+	print("总计",total)
+end
 
+sum(1,2,3,4,5,7,10)
 
+--select( "#", ... ) - 获取可变参数的数目
+--select( i, ... ) - 获取第 i 个参数，及之后的参数;
+--一般如果用单变量接收的话，可以认为它就是用来获取第i个参数的。
 
-
-
-
-
-
-
-
-
-
-
-
+-- http://bbs.ngacn.cc/read.php?tid=6621402
 
 
 
